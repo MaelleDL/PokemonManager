@@ -1,21 +1,26 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {MatListModule} from "@angular/material/list";
+import {Component, OnInit} from '@angular/core';
+
 @Component({
   selector: 'app-generations',
   templateUrl: './generations.component.html',
   styleUrls: ['./generations.component.sass']
 })
-@NgModule({
-  imports: [
-    MatListModule,
-  ]
-})
+
 export class GenerationsComponent implements OnInit {
 
-  public generations=
-    [ "Génération I", " Génération II", " Génération III", " Génération IV", " Génération V", " Génération VI", " Génération VII", " Génération VIII"];
+  public generations : string[];
 
-  constructor() { }
+  constructor() {
+    this.generations =
+      [ "Génération I",
+        " Génération II",
+        " Génération III",
+        " Génération IV",
+        " Génération V",
+        " Génération VI",
+        " Génération VII",
+        " Génération VIII"];
+  }
 
   ngOnInit(): void {
   }
