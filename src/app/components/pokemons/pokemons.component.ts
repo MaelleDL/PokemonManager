@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-
-import {Pokemon} from "../../models/Pokemon";
-import {PokemonsList} from "../../services/pokemons-list.service";
+import {Observable} from "rxjs";
+import {RequestPokemonList} from "../../models/RequestPokemonList";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-pokemons',
@@ -10,14 +10,15 @@ import {PokemonsList} from "../../services/pokemons-list.service";
 })
 export class PokemonsComponent implements OnInit {
 
-  public pokemons : Pokemon[];
+  public pokemonsList$: Observable<RequestPokemonList> | undefined;
 
-  constructor(@Inject(PokemonsList) private svc: PokemonsList) {
-  this.pokemons=[];
-    }
+  constructor(
+    @Inject(ApiService) private api: ApiService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.pokemons=this.svc.pokemons;
+    this.pokemonsList$ = this.api.getPokeList();
   }
 
 }
