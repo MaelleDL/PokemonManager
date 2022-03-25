@@ -1,16 +1,18 @@
-export class Type {
-  private _type: any;
+import {TypeName} from "./typeName";
 
-  constructor(type: any) {
+export class Type {
+
+  private _type: TypeName;
+
+  constructor(type: TypeName) {
     this._type = type;
   }
 
-  get type(): any {
+  get type(): TypeName {
     return this._type;
   }
 
-  set type(value: any) {
+  set type(value: TypeName) {
     this._type = value;
   }
-
 }

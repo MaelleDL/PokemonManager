@@ -1,5 +1,7 @@
 <div class="generation">
-  <h2>GENERATIONS DE POKEMONS</h2>
+  <div class="title">
+    <h2>GENERATIONS DE POKEMONS</h2>
+  </div>
   <mat-divider></mat-divider>
   <mat-list *ngIf="generations$ | async as generations">
     <mat-list-item *ngFor="let generation of generations.results">
