@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {ApiService} from "../../services/api.service";
+import {Observable} from "rxjs";
+import {RequestGenerationList} from "../../models/RequestGenerationList";
 
 @Component({
   selector: 'app-generations',
@@ -8,21 +11,15 @@ import {Component, OnInit} from '@angular/core';
 
 export class GenerationsComponent implements OnInit {
 
-  public generations : string[];
+  public generations$: Observable<RequestGenerationList> | undefined;
 
-  constructor() {
-    this.generations =
-      [ "Génération I",
-        " Génération II",
-        " Génération III",
-        " Génération IV",
-        " Génération V",
-        " Génération VI",
-        " Génération VII",
-        " Génération VIII"];
+  constructor(
+    @Inject(ApiService) private api: ApiService
+  ) {
   }
 
   ngOnInit(): void {
+    this.generations$ = this.api.getGeneration();
   }
 
 }
