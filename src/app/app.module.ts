@@ -10,13 +10,25 @@ import {PokemonComponent} from './components/pokemon/pokemon.component';
 import {MatCardModule} from "@angular/material/card";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {RouterModule, Routes} from "@angular/router";
+import {SearchComponent} from './components/search/search.component';
+import {MatInputModule} from "@angular/material/input";
+import {NavbarComponent} from './components/navbar/navbar.component';
+
+const appRoutes: Routes = [
+  {path: "Generations", component: GenerationsComponent, pathMatch: "full"},
+  {path: "Pokemons", component: PokemonsComponent, pathMatch: "full"},
+  // {path: "pathname", component: nomDuComposant},
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     GenerationsComponent,
     PokemonsComponent,
-    PokemonComponent
+    PokemonComponent,
+    SearchComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +36,9 @@ import {FormsModule} from "@angular/forms";
     MatListModule,
     MatCardModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

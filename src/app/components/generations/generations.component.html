@@ -1,11 +1,11 @@
-<div class="generation">
-  <div class="title">
-    <h2>GENERATIONS DE POKEMONS</h2>
+<div class="generations" *ngIf="generations$ | async as generations">
+  <div *ngFor="let generation of generations.results">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ generation.name | uppercase }}</mat-card-title>
+      </mat-card-header>
+      <div class="img"></div>
+    </mat-card>
   </div>
-  <mat-divider></mat-divider>
-  <mat-list *ngIf="generations$ | async as generations">
-    <mat-list-item *ngFor="let generation of generations.results">
-      <a href="#">{{ generation.name | uppercase }}</a>
-    </mat-list-item>
-  </mat-list>
 </div>
+
